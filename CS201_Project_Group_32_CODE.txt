@@ -186,3 +186,39 @@ void update_queue() {
             }   
         }  
     }  
+
+void dijkstra(){
+    char s[20];
+    printf("Enter starting point of your journey = ");
+    scanf("%s",s);
+    int c = find_code(s);
+     
+    struct list *t=queue_head;
+    while(t!=NULL){
+        if(t->vertex==c)
+        break;
+        t=t->next;
+    }
+     
+    t->d=0;
+     
+    update_queue();
+     
+    while(queue_head!=NULL){
+          
+    struct list *delete=queue_head;
+    queue_head=delete->next;
+    delete->next=NULL;
+    insertNode_in_source(delete);
+    
+    struct list *r=find_address(delete->vertex);
+    r=r->next;
+    
+    while(r!=NULL){
+         
+        struct list *p=queue_head;
+        while(p!=NULL){
+            if(p->vertex==r->vertex)
+            break;
+            p=p->next;
+        }
