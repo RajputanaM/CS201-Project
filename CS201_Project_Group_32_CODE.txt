@@ -317,4 +317,29 @@ void create_map(){
     }
 } 
        
-        
+     void print(){
+    char ch[20],c[20];
+    struct list *temp=source;
+    struct node *t=start;
+    while(t!=NULL){
+        if(t->code==source->vertex){
+            strcpy(ch,t->ch);
+            break;
+        }
+        t=t->next;
+    }
+      
+    while(temp!=NULL){
+        struct node *p=start;
+    while(p!=NULL){
+        if(p->code==temp->vertex){
+            strcpy(c,p->ch);
+            break;
+        }
+        p=p->next;
+    }
+        printf("Minimum distance between %s and %s is = %d\n",ch,c,temp->d);;
+        temp=temp->next;
+    }
+    
+}
