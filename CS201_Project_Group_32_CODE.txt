@@ -222,3 +222,17 @@ void dijkstra(){
             break;
             p=p->next;
         }
+         if(p!=NULL){
+         if(delete->d+find_weight(delete,p)<p->d){
+             p->d=delete->d+find_weight(delete,p);
+             p->pi=delete;
+         }
+         }
+            r=r->next;
+     }
+    update_queue();
+      
+    }
+    
+}
+
