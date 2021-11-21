@@ -114,3 +114,25 @@ void insert(){
         temp->next=t;
     }
 }
+
+
+int find_code(char *ch){
+    struct node *temp=start;
+    while(temp!=NULL){
+        if(!strcmp(ch,temp->ch)){
+            return(temp->code);
+        }
+        temp=temp->next;
+    }
+    return(-1);
+}
+
+int find_weight(struct list *ptr1, struct list *ptr2){
+    struct distance *temp=head;
+     
+    while(temp!=NULL){
+        if((ptr1->vertex==find_code(temp->ch1)&&ptr2->vertex==find_code(temp->ch2))||(ptr2->vertex==find_code(temp->ch1)&&ptr1->vertex==find_code(temp->ch2)))
+        return(temp->d);
+        temp=temp->next;
+    }
+}
