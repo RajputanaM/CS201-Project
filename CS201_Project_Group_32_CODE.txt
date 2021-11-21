@@ -1,0 +1,33 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+int n;
+
+struct node{
+    int code;
+    char ch[20];
+    struct node *next;
+};
+
+struct list{
+    int d;
+    int vertex;
+    struct list *pi;
+    struct list *next;
+};
+
+struct graph{
+    struct list *adj;
+};
+
+struct graph *G=NULL;
+
+struct node *start=NULL;
+
+struct distance{
+    char ch1[20];
+    char ch2[20];
+    int d;
+    struct distance *next;
+};
