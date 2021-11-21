@@ -236,3 +236,62 @@ void dijkstra(){
     
 }
 
+void create_map(){
+    int x=0;
+    int y=0;
+    G=(struct graph*)malloc(sizeof(struct graph));
+    G->adj=(struct list*)malloc(n*sizeof(struct list));
+    struct node *t=start;
+    for(int i=0; i<n; i++){
+        G->adj[i].vertex=t->code;
+        G->adj[i].next=NULL;
+        G->adj[i].pi=NULL;
+        t=t->next;
+    }
+     
+    char s1[20],s2[20];
+    int dist;
+    printf("Once you have entered all the path then enter 'Stop', 'Stop', and '-1' to stop.\n");
+    while(1){
+        printf("Enter starting point of path = ");
+        scanf("%s",s1);
+        if(strcmp(s1,"Stop")){
+            x=find_code(s1);
+        while(x==-1){
+            if(!strcmp(s1,"Stop"))
+            break;
+            printf("No such place exist.\n");
+            printf("Please enter another starting point of path = ");
+            scanf("%s",s1);
+            x=find_code(s1);
+         }
+        }
+        printf("Enter destination point = ");
+        scanf("%s",s2);
+        if(strcmp("Stop",s2)){
+            y=find_code(s2);
+        while(y==-1){
+            if(!strcmp(s2,"Stop"))
+            break;
+            printf("No such place exist.\n");
+            printf("Please enter another destination point = ");
+            scanf("%s",s2);
+            y=find_code(s2);
+         }
+        }
+        
+        printf("Enter distance between %s and %s in Km = ",s1,s2);
+        scanf("%d",&dist);
+        if(dist==-1&&!strcmp("Stop",s1)&&!strcmp("Stop",s2))
+        break;
+        struct list *p1=find_address(x);
+        struct list *p2=(struct list*)malloc(sizeof(struct list));
+        p2->vertex=y;
+        p2->next=NULL;
+        while(p1->next!=NULL){
+            p1=p1->next;
+        }
+        p1->next=p2;
+        
+       
+        
