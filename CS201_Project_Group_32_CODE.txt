@@ -343,3 +343,22 @@ void create_map(){
     }
     
 }
+void display(){
+    char s[20],c[20];
+    printf("Enter place name where you want to go = ");
+    scanf("%s",s);
+    struct list *temp=source;
+    int x=find_code(s);
+    while(temp!=NULL){
+        if(temp->vertex==x){
+            break;
+        }
+        temp=temp->next;
+    }
+     while(temp!=source){
+          struct node *p=start;
+    while(p!=NULL){
+        if(p->code==temp->vertex){
+            strcpy(c,p->ch);
+            break;
+           }
