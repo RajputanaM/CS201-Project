@@ -85,3 +85,32 @@ int unique_code(int code){
     }
     return 0;
 }
+
+void insert(){
+    struct node *t=(struct node*)malloc(sizeof(struct node));
+    printf("Enter place name = ");
+    scanf("%s",t->ch);
+     while(unique_name(t->ch)){
+        printf("This place name is already used.\n");
+        printf("Please enter different name = ");
+        scanf("%s",t->ch);
+    }
+    printf("Enter a unique code for this place = ");
+    scanf("%d",&t->code);
+     
+    while(unique_code(t->code)){
+         printf("This code is already used.\n");
+         printf("Please enter a unique code = ");
+         scanf("%d",&t->code);
+    }
+    t->next=NULL;
+    if(start==NULL)
+    start=t;
+    else{
+        struct node *temp=start;
+        while(temp->next!=NULL){
+            temp=temp->next;
+        }
+        temp->next=t;
+    }
+}
