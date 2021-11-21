@@ -362,3 +362,19 @@ void display(){
             strcpy(c,p->ch);
             break;
            }
+            p=p->next;
+ }
+         printf("%s <- ",c);
+         
+         temp=temp->pi;
+      }
+      struct node *q=start;
+    while(q!=NULL){
+        if(q->code==temp->vertex){
+            strcpy(c,q->ch);
+            break;
+           }
+        q=q->next;
+         }
+      printf("%s",c);
+}
