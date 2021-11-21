@@ -156,3 +156,33 @@ void insertNode_in_source(struct list *p){
     }
 }
 
+
+void update_queue() {  
+        struct list *t = queue_head;  
+        int temp,v;  
+          struct list *s;
+        if(queue_head == NULL) {  
+            return;  
+        }  
+        else {
+            while(t!= NULL) {  
+                struct list *p=t->next;
+                  
+                while(p!= NULL) {  
+                    if(t->d >p->d) {  
+                        temp = t->d;  
+                        t->d = p->d;  
+                        p->d = temp;  
+                        v=t->vertex;
+                        t->vertex=p->vertex;
+                        p->vertex=v;
+                        s=t->pi;
+                        t->pi=p->pi;
+                        p->pi=s;
+                    }  
+                    p = p->next;  
+                }  
+                t = t->next;  
+            }   
+        }  
+    }  
