@@ -292,6 +292,29 @@ void create_map(){
             p1=p1->next;
         }
         p1->next=p2;
+        struct list *r1=find_address(y);
+        struct list *r2=(struct list*)malloc(sizeof(struct list));
+        r2->vertex=x;
+        r2->next=NULL;
+        while(r1->next!=NULL){
+            r1=r1->next;
+        }
+        r1->next=r2;
         
+        struct distance *a=(struct distance*)malloc(sizeof(struct distance));
+        strcpy(a->ch1,s1);
+        strcpy(a->ch2,s2);
+        a->d=dist;
+        
+        if(head==NULL)
+        head=a;
+        else{
+            struct distance *b=head;
+            while(b->next!=NULL)
+            b=b->next;
+            b->next=a;
+        }
+    }
+} 
        
         
